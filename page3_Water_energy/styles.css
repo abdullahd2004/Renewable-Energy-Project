@@ -1,0 +1,104 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: lightblue;
+  }
+
+  nav {
+  
+    height: 80px;
+    background:#333; /* Blue color for the navbar */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .nav-items a {
+    text-decoration: none;
+    color: #ffffff; /* White color for navbar links */
+    margin: 0 15px;
+  }
+
+  
+  .logo {
+    color: #ffffff; /* White color for the logo */
+    font-size: 1.5rem;
+    align-items: center;
+
+  }
+
+  
+  .logo {
+    color: #ffffff; /* White color for the logo */
+    font-size: 1.5rem;
+    align-items: center;}
+
+img{
+    width: 1370px;
+    height: 300px;
+}
+
+/*  container for the image and text, with relative positioning */
+.container {
+    position: relative;
+    max-width: 100%;
+  }
+.image{
+    width: 100%;
+    height: 300PX;
+    display: block;
+  }
+/* Styled the text to be positioned in the center of the container */
+  .text {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+  }
+
+
+  .page {
+    background-color: white;
+    padding: 50px; /* Adjust padding as needed */
+    margin: auto; /* Adjust margin as needed */
+    width: 40%;
+    
+  }
+    /*styling for the para*/
+  p{
+    font-family: 'Times New Roman', Times, serif;
+  }
+
+  /*styling for thee heading*/
+  h1{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+  }
+  
+  .smallhydro{
+    /*adjusting image size and fitting it into the page*/
+    width: 350px;
+    height: 200px;
+    float: center;
+            margin-top: 5%; 
+            margin-left: 15%; 
+    
+
+   
+  }
+  .hydropower{
+    /*adjusting image size and fitting it into the page*/
+    width: 350px;
+    height: 200px;
+    float: center;
+            margin-top: 5%; 
+            margin-left: 15%; 
+
+  }
+
+  

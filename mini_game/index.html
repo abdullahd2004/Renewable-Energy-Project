@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mini game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!--nav bar-->
+    <nav>
+        <div class="logo">Energy🧠</div>
+        <div class="nav-items">
+              <a href="/page2_geothermal_energy/index.html">Geothermal</a>
+              <a href="/page3_Water_energy/index.html">Water</a>
+              <a href="/page4_Wind_energy/index.html">Wind</a>
+              <a href="/page5_solar_energy/index.html">Solar</a>
+              <a class="minigame" href="index.html">Mini game</a>
+              <a class="contact" href="/contact/index.html">Contact</a>
+              <a class="home" href="/docs/index.html">home</a>
+        </nav>
+    <h1>Guess the Name Game</h1>
+
+    <!-- Container for displaying images -->
+    <div id="imageContainer">
+        <!-- Image will be added dynamically using JavaScript -->
+    </div>
+    <!-- User prompt and guess options container -->
+    <p>Guess the correct name of the picture:</p>
+    <!--container for the guess options-->
+    <div id="guessContainer">
+        
+    </div>
+    <!-- Button to submit the guess -->
+    <button onclick="checkGuess()">Submit Guess</button>
+
+    <!-- Display feedback to the user -->
+    <p id="result"></p>
+
+ 
+<script>
+    // added image URLs and names
+    const images = [
+        { src: 'images/pumpjack.jpg', name: 'pump jack' },
+        { src: 'images/windturbine.avif', name: 'Wind Turbine' },
+        { src: 'images/electriccar.avif', name: 'electric car' },
+        { src: 'images/solarpanel.jpg', name: 'Solar Panel' },
+        { src: 'images/oilrig.jpg', name: 'Oil Rig' },
+        { src: 'images/hydropower.jpg', name: 'Hydropower' },
+        { src: 'images/powerplant.jpg', name: 'Power Plant' },
+    ];
+
+
+
+
+
+    // Index of the current image being displayed
+    let currentImageIndex = 0;
+
+    // this Function is to initialize the game and to displaya the1st image and guess options
+    function initializeGame() {
+        
+        displayImage();
+        displayGuessOptions();
+    }
+
+    // Function to display the current image
+    function displayImage() {
+        const imageContainer = document.getElementById('imageContainer');
+        imageContainer.innerHTML = `<img src="${images[currentImageIndex].src}" alt="${images[currentImageIndex].name}">`;
+    }
+
+    // Function to display guess options
+    function displayGuessOptions() {
+        const guessContainer = document.getElementById('guessContainer'); //this guess container  
+        guessContainer.innerHTML = '';                                    //is where yhe guess options wil be
+                                                                        //shown
+       // it's making and adding little boxes with radio buttons and image names for
+         //each image in the images array.
+             images.forEach((image, index) => {
+            guessContainer.innerHTML += `<div><input type="radio" name="guess" value="${index}">${image.name}</div>`;
+        });
+    }
+
+    // Function to check the player's guess
+    function checkGuess() {
+        const selectedOption = document.querySelector('input[name="guess"]:checked');
+        const resultElement = document.getElementById('result');
+            //if player doesnt choose an option
+        if (!selectedOption) {
+            resultElement.innerHTML = 'Please select a guess.';
+            resultElement.style.color = 'red';
+            return;
+        }
+       // if the selected guess is correct
+        if (images[selectedOption.value].name === images[currentImageIndex].name) {
+            resultElement.innerHTML = `Correct! Move on to the next picture.`;
+            resultElement.style.color = 'green';
+
+            // Move to the next picture if available
+            currentImageIndex++;
+
+            // Check if there are more pictures to display and if there is 
+            if (currentImageIndex < images.length) {
+                // Display the next image and guess options
+                displayImage();
+                displayGuessOptions();
+
+            } else {                // Display a congratulations message if all pictures are guessed
+                resultElement.innerHTML = `Congratulations! You guessed all names.`;
+                resultElement.style.color = 'green';
+                 // Disable the button after all pictures are guessed
+                document.querySelector('button').disabled = true;
+            }
+        } else { // Display an incorrect guess message if user gets it wrong
+            resultElement.innerHTML = 'Incorrect. Try again.';
+            resultElement.style.color = 'red';
+        }
+    }
+
+    
+
+
+
+
+
+    // Initialize the game when the page loads
+    initializeGame();
+</script>
+
+</body>
+</html>
